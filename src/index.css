@@ -1,0 +1,215 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Helvetica Neue", "Inter", Arial, sans-serif;
+  --font-display: "Helvetica Neue", "Inter", Arial, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  /* Clean Minimalism Color Palette */
+  --color-brand-primary: #87CEEB; /* Sky Blue */
+  --color-brand-secondary: #E6E6FA; /* Lavender */
+  --color-brand-accent: #D4AF37; /* Gold */
+  
+  /* Animations */
+  --animate-float-slow: float-slow 15s ease-in-out infinite;
+  --animate-float-mid: float-mid 10s ease-in-out infinite;
+  --animate-cloud-drift-left: cloud-drift-left 45s linear infinite;
+  --animate-cloud-drift-right: cloud-drift-right 60s linear infinite;
+  --animate-pulse-subtle: pulse-subtle 4s ease-in-out infinite;
+}
+
+@keyframes float-slow {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-15px) rotate(1deg);
+  }
+}
+
+@keyframes float-mid {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(-1deg);
+  }
+}
+
+@keyframes cloud-drift-left {
+  0% {
+    transform: translateX(110%);
+  }
+  100% {
+    transform: translateX(-110%);
+  }
+}
+
+@keyframes cloud-drift-right {
+  0% {
+    transform: translateX(-110%);
+  }
+  100% {
+    transform: translateX(110%);
+  }
+}
+
+@keyframes pulse-subtle {
+  0%, 100% {
+    opacity: 0.85;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.02);
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  background-color: #F8FAFC;
+  color: #1E293B;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Custom Cloud Background as described in theme */
+.cloud-bg-element {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 10% 20%, rgba(135, 206, 235, 0.22) 0%, transparent 45%), radial-gradient(circle at 90% 80%, rgba(230, 230, 250, 0.35) 0%, transparent 45%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.dark .cloud-bg-element {
+  background: radial-gradient(circle at 10% 20%, rgba(135, 206, 235, 0.08) 0%, transparent 45%), radial-gradient(circle at 90% 80%, rgba(230, 230, 250, 0.08) 0%, transparent 45%);
+}
+
+/* Glassmorphism layer helpers conforming with Clean Minimalism Specs */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 24px;
+}
+
+.dark .glass-panel {
+  background: rgba(15, 23, 42, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+}
+
+.dark .glass-card {
+  background: rgba(30, 41, 59, 0.55);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+}
+
+/* Clean Food Card Style */
+.food-card-element {
+  background: white;
+  border-radius: 20px;
+  padding: 12px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+  border: 1px solid #F1F5F9;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.dark .food-card-element {
+  background: #0F172A;
+  border-color: #1E293B;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.15);
+}
+
+.food-card-element:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 20px -3px rgba(135, 206, 235, 0.12);
+}
+
+/* Clean Minimal Button classes mapping for utility reference */
+.btn-primary-clean {
+  background-color: #87CEEB; /* Sky blue */
+  color: white;
+  padding: 12px 28px;
+  border-radius: 9999px;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.2s;
+  box-shadow: 0 4px 12px rgba(135, 206, 235, 0.25);
+}
+
+.btn-primary-clean:hover {
+  background-color: #72bddc;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px rgba(135, 206, 235, 0.35);
+}
+
+.btn-secondary-clean {
+  background-color: rgba(230, 230, 250, 0.5); /* Lavender */
+  color: #1E293B;
+  padding: 12px 28px;
+  border-radius: 9999px;
+  font-weight: 600;
+  font-size: 14px;
+  border: 1px solid #E6E6FA;
+  transition: all 0.2s;
+}
+
+.dark .btn-secondary-clean {
+  background-color: rgba(230, 230, 250, 0.15);
+  color: #F8FAFC;
+  border-color: rgba(230, 230, 250, 0.25);
+}
+
+.btn-secondary-clean:hover {
+  background-color: rgba(230, 230, 250, 0.7);
+  transform: translateY(-1px);
+}
+
+.dark .btn-secondary-clean:hover {
+  background-color: rgba(230, 230, 250, 0.25);
+}
+
+/* Custom scrollbar to keep layout premium */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+.dark ::-webkit-scrollbar-track {
+  background: #0f172a;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: #334155;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+

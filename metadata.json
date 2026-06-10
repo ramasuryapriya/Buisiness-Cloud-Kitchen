@@ -1,0 +1,6 @@
+{
+  "name": "Cloud Kitchen – Dreamy Realistic Dining Experience",
+  "description": "A premium, dreamy-realistic cloud kitchen experience bringing gourmet meals crafted in ambient clouds straight to your doorstep.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
