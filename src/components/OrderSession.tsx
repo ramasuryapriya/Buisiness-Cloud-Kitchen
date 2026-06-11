@@ -209,66 +209,128 @@ export default function OrderSession({
                 })}
               </div>
 
-              {/* MIDDLE PORTION: INTERACTIVE GPS GRAPHICAL MAP */}
-              <div className="mt-10 p-2 bg-slate-50 dark:bg-slate-950 rounded-[32px] border border-slate-150/30 dark:border-slate-850 overflow-hidden relative">
-                <div className="text-[10px] font-mono p-2 text-slate-400 dark:text-slate-500 uppercase tracking-widest text-left">
-                  📌 Active GPS Cloud Route Tracking (Simulated)
-                </div>
-
-                <div className="relative h-[250px] w-full bg-slate-100 dark:bg-slate-900 rounded-2xl overflow-hidden shadow-inner flex items-center justify-center">
-                  {/* Styled Map outlines */}
-                  <svg className="absolute inset-0 w-full h-full text-slate-200 dark:text-slate-800/80" fill="none" preserveAspectRatio="none">
-                    <line x1="10%" y1="20%" x2="90%" y2="80%" stroke="currentColor" strokeWidth="4" strokeDasharray="8 8" />
-                    <line x1="30%" y1="80%" x2="60%" y2="20%" stroke="currentColor" strokeWidth="2" strokeDasharray="3 3" />
-                    <path d="M 0,100 C 150,150 250,50 450,200 L 900,100" stroke="currentColor" strokeWidth="2" strokeDasharray="6 6" />
-                    {/* Decorative map layout blocks */}
-                    <rect x="5%" y="60%" width="12%" height="15%" rx="8" fill="currentColor" opacity="0.3" />
-                    <rect x="65%" y="10%" width="20%" height="20%" rx="12" fill="currentColor" opacity="0.3" />
-                    <rect x="40%" y="70%" width="18%" height="10%" rx="6" fill="currentColor" opacity="0.3" />
-                  </svg>
-
-                  {/* 1. HQ Marker */}
-                  <div className="absolute left-[15%] top-[25%] flex flex-col items-center">
-                    <div className="p-2 bg-indigo-500 text-white rounded-full shadow-lg border-2 border-white animate-float-slow">
-                      🍳
+              {/* MIDDLE PORTION: INTERACTIVE GPS GRAPHICAL MAP & LIVE CAMERA STREAM */}
+              <div className="mt-10 p-4 bg-slate-50/50 dark:bg-slate-950/40 rounded-[38px] border border-slate-150/30 dark:border-slate-850 overflow-hidden relative">
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+                  
+                  {/* LEFT COLUMN: LIVE STREAM / CAMERA FEED */}
+                  <div className="md:col-span-5 flex flex-col text-left">
+                    <div className="flex items-center justify-between p-1.5 mb-2.5">
+                      <div className="flex items-center gap-1.5">
+                        <span className="w-2 h-2 rounded-full bg-pink-500 animate-ping" />
+                        <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-slate-800 dark:text-slate-200">
+                          📺 Dynamic Culinary Cam Feed
+                        </span>
+                      </div>
+                      <span className="py-0.5 px-2 rounded-md bg-slate-200/50 dark:bg-slate-900 border border-slate-250/30 text-[9px] font-mono text-slate-500">
+                        CAM_HQ_0{(simulationStep + 1)}
+                      </span>
                     </div>
-                    <span className="text-[9px] font-mono font-bold bg-white dark:bg-slate-950 p-1 rounded-md shadow-xs text-slate-800 dark:text-slate-300 mt-1 uppercase border border-slate-100 dark:border-slate-800">
-                      Cloud Kitchen HQ
-                    </span>
-                  </div>
 
-                  {/* 2. Destination Marker */}
-                  <div className="absolute right-[15%] bottom-[25%] flex flex-col items-center">
-                    <div className="p-2 bg-pink-500 text-white rounded-full shadow-lg border-2 border-white animate-float-mid">
-                      🏠
+                    <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-slate-100 dark:bg-slate-900 border border-slate-200/40 dark:border-slate-800 shadow-sm group">
+                      <AnimatePresence mode="wait">
+                        <motion.img
+                          key={simulationStep}
+                          src={
+                            simulationStep === 0
+                              ? 'https://images.unsplash.com/photo-1556910103-1c02745aae4d?q=80&w=600&auto=format&fit=crop'
+                              : simulationStep === 1
+                              ? 'https://images.unsplash.com/photo-1590577976322-3d276f58760a?q=80&w=600&auto=format&fit=crop'
+                              : simulationStep === 2
+                              ? 'https://images.unsplash.com/photo-1526367790999-015078648679?q=80&w=600&auto=format&fit=crop'
+                              : 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=600&auto=format&fit=crop'
+                          }
+                          alt="Live Kitchen Stream"
+                          className="w-full h-full object-cover"
+                          initial={{ opacity: 0, filter: 'blur(5px)' }}
+                          animate={{ opacity: 1, filter: 'blur(0px)' }}
+                          exit={{ opacity: 0, filter: 'blur(5px)' }}
+                          transition={{ duration: 0.4 }}
+                          referrerPolicy="no-referrer"
+                        />
+                      </AnimatePresence>
+
+                      {/* Video Scanline and overlay */}
+                      <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-950/80 to-transparent p-3.5 flex items-end justify-between">
+                        <span className="text-[10px] font-mono text-white/90 uppercase tracking-widest font-black">
+                          {simulationStep === 0
+                            ? 'Preparing fresh elements'
+                            : simulationStep === 1
+                            ? 'Fluffy baking & sealing'
+                            : simulationStep === 2
+                            ? 'In transit (heat locked)'
+                            : 'Gourmet meal arrived!'}
+                        </span>
+                        <span className="text-[9px] font-mono text-emerald-400 font-bold tracking-wider animate-pulse uppercase">
+                          ● Online
+                        </span>
+                      </div>
                     </div>
-                    <span className="text-[9px] font-mono font-bold bg-white dark:bg-slate-950 p-1 rounded-md shadow-xs text-slate-800 dark:text-slate-300 mt-1 uppercase border border-slate-100 dark:border-slate-800">
-                      Your Living Room
-                    </span>
                   </div>
 
-                  {/* Moving Scooter Courier Courier Indicator */}
-                  {simulationStep < 3 && (
-                    <motion.div 
-                      className="absolute p-1.5 bg-gradient-to-tr from-sky-400 to-indigo-500 text-white rounded-full shadow-xl border border-white flex items-center gap-1"
-                      animate={{
-                        left: simulationStep === 0 ? '22%' : simulationStep === 1 ? '45%' : '75%',
-                        top: simulationStep === 0 ? '30%' : simulationStep === 1 ? '48%' : '65%',
-                      }}
-                      transition={{ duration: 6, ease: 'easeInOut' }}
-                    >
-                      <Truck className="w-4 h-4 animate-bounce" />
-                      <span className="text-[8px] font-mono font-extrabold pr-1 tracking-wider">Couriers flying</span>
-                    </motion.div>
-                  )}
+                  {/* RIGHT COLUMN: SIMULATED GPS MAP */}
+                  <div className="md:col-span-7 flex flex-col text-left">
+                    <div className="text-[10px] p-1.5 mb-1 text-slate-400 dark:text-slate-500 uppercase tracking-widest font-mono font-bold">
+                      📌 Active GPS Cloud Route Tracking (Live)
+                    </div>
 
-                  {/* Fog/Mist clouds rolling across the map for atmospheric feel */}
-                  <div className="absolute left-[-50px] top-1/3 opacity-35 dark:opacity-15 animate-cloud-drift-right pointer-events-none">
-                    ☁️☁️
+                    <div className="relative h-[220px] w-full bg-slate-100 dark:bg-slate-900 rounded-2xl overflow-hidden shadow-inner flex items-center justify-center border border-slate-200/40 dark:border-slate-800">
+                      {/* Styled Map outlines */}
+                      <svg className="absolute inset-0 w-full h-full text-slate-200 dark:text-slate-850" fill="none" preserveAspectRatio="none">
+                        <line x1="10%" y1="20%" x2="90%" y2="80%" stroke="currentColor" strokeWidth="4" strokeDasharray="8 8" />
+                        <line x1="30%" y1="80%" x2="60%" y2="20%" stroke="currentColor" strokeWidth="2" strokeDasharray="3 3" />
+                        <path d="M 0,100 C 150,150 250,50 450,200 L 900,100" stroke="currentColor" strokeWidth="2" strokeDasharray="6 6" />
+                        {/* Decorative map layout blocks */}
+                        <rect x="5%" y="60%" width="12%" height="15%" rx="8" fill="currentColor" opacity="0.3" />
+                        <rect x="65%" y="10%" width="20%" height="20%" rx="12" fill="currentColor" opacity="0.3" />
+                        <rect x="40%" y="70%" width="18%" height="10%" rx="6" fill="currentColor" opacity="0.3" />
+                      </svg>
+
+                      {/* 1. HQ Marker */}
+                      <div className="absolute left-[15%] top-[25%] flex flex-col items-center">
+                        <div className="p-2 bg-indigo-500 text-white rounded-full shadow-lg border border-white/60 animate-float-slow">
+                          🍳
+                        </div>
+                        <span className="text-[8px] font-mono font-bold bg-white dark:bg-slate-950 p-1 rounded-md shadow-xs text-slate-800 dark:text-slate-300 mt-1 uppercase border border-slate-100 dark:border-slate-800">
+                          Cloud HQ
+                        </span>
+                      </div>
+
+                      {/* 2. Destination Marker */}
+                      <div className="absolute right-[15%] bottom-[25%] flex flex-col items-center">
+                        <div className="p-2 bg-pink-500 text-white rounded-full shadow-lg border border-white/60 animate-float-mid">
+                          🏠
+                        </div>
+                        <span className="text-[8px] font-mono font-bold bg-white dark:bg-slate-950 p-1 rounded-md shadow-xs text-slate-800 dark:text-slate-300 mt-1 uppercase border border-slate-100 dark:border-slate-800">
+                          Your Room
+                        </span>
+                      </div>
+
+                      {/* Moving Scooter Courier Courier Indicator */}
+                      {simulationStep < 3 && (
+                        <motion.div 
+                          className="absolute p-1.5 bg-gradient-to-tr from-sky-400 to-indigo-500 text-white rounded-full shadow-xl border border-white flex items-center gap-1 z-10"
+                          animate={{
+                            left: simulationStep === 0 ? '22%' : simulationStep === 1 ? '45%' : '75%',
+                            top: simulationStep === 0 ? '30%' : simulationStep === 1 ? '48%' : '65%',
+                          }}
+                          transition={{ duration: 6, ease: 'easeInOut' }}
+                        >
+                          <Truck className="w-3.5 h-3.5 animate-bounce" />
+                          <span className="text-[8px] font-mono font-extrabold pr-1 tracking-wider">POD FLYING</span>
+                        </motion.div>
+                      )}
+
+                      {/* Fog/Mist clouds rolling across the map for atmospheric feel */}
+                      <div className="absolute left-[-50px] top-1/3 opacity-35 dark:opacity-15 animate-cloud-drift-right pointer-events-none">
+                        ☁️☁️
+                      </div>
+                      <div className="absolute right-[-40px] top-2/3 opacity-30 dark:opacity-10 animate-cloud-drift-left pointer-events-none">
+                        ☁️
+                      </div>
+                    </div>
                   </div>
-                  <div className="absolute right-[-40px] top-2/3 opacity-30 dark:opacity-10 animate-cloud-drift-left pointer-events-none">
-                    ☁️
-                  </div>
+
                 </div>
               </div>
 

@@ -62,21 +62,31 @@ export default function About() {
                 </div>
               </motion.div>
 
-              {/* Smaller overlapping absolute panel behind representing Delivery state */}
+              {/* Premium Inspiration card */}
               <motion.div 
                 initial={{ opacity: 0, scale: 0.8, y: 40 }}
                 whileInView={{ opacity: 1, scale: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: 0.2 }}
-                className="absolute -bottom-8 -right-8 z-20 w-48 p-4 bg-gradient-to-tr from-[#87CEEB] to-[#6fbcdd] rounded-2xl shadow-xl text-white text-left"
+                className="absolute -bottom-10 -right-10 z-20 w-52 p-2 bg-white dark:bg-slate-900 border border-slate-200/60 dark:border-slate-800/80 rounded-[24px] shadow-2xl text-left"
               >
-                <div className="flex items-center gap-1.5 mb-1 bg-white/20 w-fit px-2 py-0.5 rounded-full text-[10px] font-semibold">
-                  <span>99.8% Pure</span>
+                <div className="relative aspect-[4/3] rounded-[18px] overflow-hidden mb-2.5">
+                  <img 
+                    src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?q=80&w=400&auto=format&fit=crop" 
+                    alt="Dream City Muse" 
+                    className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+                    referrerPolicy="no-referrer"
+                  />
+                  <div className="absolute top-2 left-2 px-2.5 py-0.5 rounded-full bg-slate-950/80 text-white font-mono text-[9px] uppercase tracking-wider font-semibold">
+                    ✨ Inspiration
+                  </div>
                 </div>
-                <h4 className="font-display font-bold text-sm">Vacuum Vapor Pod</h4>
-                <p className="text-[10px] text-sky-100 mt-1 leading-normal">
-                  Our custom thermal delivery pods guarantee a freshly baked texture at precise dining temperature.
-                </p>
+                <div className="px-2 pb-1">
+                  <h4 className="font-display font-bold text-xs text-slate-900 dark:text-white">Culinary Artistry</h4>
+                  <p className="text-[10px] text-slate-500 dark:text-slate-400 mt-1 leading-relaxed font-sans font-normal">
+                    Inspired by pristine high-altitude ingredients, micro-farms, and world-class molecular gastronomy standards.
+                  </p>
+                </div>
               </motion.div>
             </div>
           </div>
@@ -128,7 +138,7 @@ export default function About() {
             <div className="mt-8 p-4 rounded-xl bg-amber-500/5 border border-amber-500/10 flex items-center gap-3">
               <span className="p-1 px-2.5 rounded-full bg-amber-500 text-white text-[10px] font-bold">100% Verified</span>
               <p className="text-[11px] sm:text-xs text-amber-800 dark:text-amber-400 font-sans font-medium">
-                Federation of Aesthetic Gastronomy certified our process as a "Pinnacle of Pure Gourmet Craftsmanship".
+                Federation of Aesthetic Feast certified our process as a "Pinnacle of Pure Gourmet Craftsmanship".
               </p>
             </div>
           </div>

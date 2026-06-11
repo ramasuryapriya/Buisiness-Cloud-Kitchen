@@ -9,7 +9,7 @@ import Hero from './components/Hero';
 import About from './components/About';
 import Menu from './components/Menu';
 import Offers from './components/Offers';
-import WhyChooseUs from './components/WhyChooseUs';
+import NutritionAnalysis from './components/NutritionAnalysis';
 import Reviews from './components/Reviews';
 import Gallery from './components/Gallery';
 import ReservationSection from './components/ReservationSection';
@@ -152,8 +152,8 @@ export default function App() {
         onApplyCouponCode={handleApplyCoupon}
       />
 
-      {/* 6. High-Contrast Bento "Why Choose Us" grids */}
-      <WhyChooseUs />
+      {/* 6. Nutrition Analysis Wellness Dashboard */}
+      <NutritionAnalysis />
 
       {/* 7. Testimonial Reviews & Michelin block */}
       <Reviews />

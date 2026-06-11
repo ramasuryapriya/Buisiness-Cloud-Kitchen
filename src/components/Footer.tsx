@@ -39,16 +39,21 @@ export default function Footer({ onScrollToSection, openReservationModal }: Foot
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 pb-12 border-b border-slate-900 text-left">
           
           <div className="lg:col-span-5 flex flex-col items-start">
-            <div className="flex items-center gap-2 cursor-pointer group" onClick={() => onScrollToSection('hero')}>
-              <div className="p-2 bg-[#87CEEB] rounded-full shadow-xs">
-                <Sparkles className="w-5 h-5 text-white animate-pulse" />
+            <div className="flex items-center gap-2.5 cursor-pointer group" onClick={() => onScrollToSection('hero')}>
+              <div className="relative w-9 h-9 rounded-full overflow-hidden border border-[#87CEEB] shrink-0">
+                <img 
+                  src="https://files.catbox.moe/mmishw.jpg" 
+                  alt="Paris Dream Logo" 
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-115"
+                  referrerPolicy="no-referrer"
+                />
               </div>
               <div>
                 <span className="font-display font-black text-xl tracking-tight text-[#87CEEB]">
                   Cloud Kitchen
                 </span>
                 <span className="block text-[10px] font-mono tracking-widest uppercase text-sky-400">
-                  Dreamy Dining
+                  Aesthetic Feast
                 </span>
               </div>
             </div>
@@ -72,7 +77,7 @@ export default function Footer({ onScrollToSection, openReservationModal }: Foot
               {[
                 { name: 'Gourmet Menu', id: 'menu' },
                 { name: 'Special Offers', id: 'offers' },
-                { name: 'Why Cloud Kitchen?', id: 'why-choose-us' },
+                { name: 'Nutrition Analysis', id: 'nutrition-analysis' },
                 { name: 'Testimonials', id: 'reviews' },
                 { name: 'Contact support', id: 'contact' },
               ].map((link, i) => (

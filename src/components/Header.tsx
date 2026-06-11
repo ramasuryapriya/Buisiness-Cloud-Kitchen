@@ -38,7 +38,7 @@ export default function Header({
   const menuLinks = [
     { name: 'Menu', id: 'menu' },
     { name: 'Special Offers', id: 'offers' },
-    { name: 'Why Cloud?', id: 'why-choose-us' },
+    { name: 'Nutrition Analysis', id: 'nutrition-analysis' },
     { name: 'Reviews', id: 'reviews' },
     { name: 'Behind the Scenes', id: 'gallery' },
     { name: 'Contact', id: 'contact' },
@@ -57,18 +57,23 @@ export default function Header({
         {/* Brand Logo with cloud-realistic float */}
         <div 
           onClick={() => handleLinkClick('hero')} 
-          className="flex items-center gap-2 cursor-pointer group"
+          className="flex items-center gap-2.5 cursor-pointer group"
           id="brand-logo"
         >
-          <div className="relative p-2 bg-gradient-to-tr from-sky-400 to-indigo-300 rounded-xl shadow-md shadow-sky-200/50 dark:shadow-none animate-float-mid">
-            <Sparkles className="w-5 h-5 text-white animate-pulse" />
+          <div className="relative w-10 h-10 rounded-full overflow-hidden border-2 border-[#87CEEB] shadow-md shadow-sky-200/50 dark:shadow-none animate-float-mid shrink-0">
+            <img 
+              src="https://files.catbox.moe/mmishw.jpg" 
+              alt="Paris Dream Logo" 
+              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-115"
+              referrerPolicy="no-referrer"
+            />
           </div>
           <div>
-            <span className="font-display font-extrabold text-xl tracking-tight bg-gradient-to-r from-sky-500 via-indigo-400 to-pink-500 bg-clip-text text-transparent group-hover:opacity-85 transition-opacity">
+            <span className="font-display font-extrabold text-xl tracking-tight bg-gradient-to-r from-sky-500 via-indigo-500 to-pink-500 bg-clip-text text-transparent group-hover:opacity-85 transition-opacity">
               Cloud Kitchen
             </span>
-            <span className="block text-[10px] font-mono tracking-widest uppercase text-sky-500 dark:text-sky-400">
-              Dreamy Dining
+            <span className="block text-[10px] font-mono tracking-widest uppercase text-sky-500 dark:text-sky-450">
+              Aesthetic Feast
             </span>
           </div>
         </div>

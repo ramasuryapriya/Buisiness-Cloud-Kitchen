@@ -70,7 +70,7 @@ export default function Menu({ onAddToCart, favoritedIds, onToggleFavorite }: Me
         {/* HEADER SECTION METADATA */}
         <div className="text-center max-w-2xl mx-auto mb-12">
           <span className="text-xs font-mono font-bold tracking-widest uppercase text-sky-500 dark:text-sky-400">
-            Aesthetic Gastronomy
+            Aesthetic Feast
           </span>
           <h2 className="font-display font-extrabold text-3xl sm:text-4xl text-slate-900 dark:text-white mt-2 tracking-tight">
             Explore Our Ethereal Menu
